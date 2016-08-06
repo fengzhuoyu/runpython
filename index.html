@@ -45,7 +45,7 @@ window.__EXECUTE__BRYTHON__ = __EXECUTE__BRYTHON__
             </span>
             <span class="button" id="loading">WORKING</span>
         </div>
-    </div>
+      </div>
     
     
     <div class="row" id="body-row">
@@ -57,39 +57,29 @@ window.__EXECUTE__BRYTHON__ = __EXECUTE__BRYTHON__
         <textarea readonly cols="80" id="console"></textarea>
     	</div>
     </div>
-    
-    <div class="row">
-        <div class="twelve columns" id="footer-row">
-            <a href = "/">runpython.com</a> runs on 
-            <a href="https://github.com/tiggerntatie/brython-server">
-            Brython-Server</a> and 
-            <a href="http://www.brython.info/">Brython</a>.
-            <a href= "/brythonconsole">runpython.com Console</a>
-        </div>
-    </div>
-
 </div>
-
-
-<form id="run_auth_request" action="" method="post">
-  <input id="auth_request" name="auth_request" type="hidden" value="">
-</form>
-<form id="run_auth_forget" action="" method="post">
-  <input id="auth_forget" name="auth_forget" type="hidden" value="">
-</form>
-
+    <button id="reload_container">reload graphics</button>
+    <button  id="button" 
+            onclick="bsController.runeditor(bsUI, bsConsole)">&gt;</button>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.0/ace.js" type="text/javascript" charset="utf-8" ></script>
+<script type="text/python">
+from browser import document
 
+def reload_container(ev):
+    document["container"].html = ""
+
+document['reload_container'].bind('click', reload_container)
+</script>
 <script type="text/javascript" src="static/bs.js"></script>
-
 <script type="text/javascript">
     bsConsole.init();
     bsUI.init();    
     bsUI.starteditor();
     bsController.init();
-    // editor.on("change", sendEditorChange());
-
+    //editor.on("change", sendEditorChange());
 </script>
+<p id="container">
+</p>
 
 
